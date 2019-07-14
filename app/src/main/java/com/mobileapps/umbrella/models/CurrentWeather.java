@@ -1,5 +1,5 @@
 
-package com.mobileapps.umbrella.modeld;
+package com.mobileapps.umbrella.models;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
