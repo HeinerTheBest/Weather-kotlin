@@ -139,7 +139,7 @@
 
         <TextView
             android:id="@+id/tvHumaditi"
-            android:text="Humidity: 47%"
+            android:text="Humidity: 43%"
             style="@style/NormalTextViews"
             app:layout_constraintTop_toTopOf="@id/iconHumidity"
             app:layout_constraintBottom_toBottomOf="@id/iconHumidity"
@@ -160,7 +160,7 @@
 
         <TextView
             android:id="@+id/tvWindSpeed"
-            android:text="Wind Speed: 2 meter/sec"
+            android:text="Wind Speed: 52 miles/hr"
             style="@style/NormalTextViews"
             app:layout_constraintTop_toTopOf="@+id/iconWindSpeed"
             app:layout_constraintStart_toEndOf="@id/iconWindSpeed"
