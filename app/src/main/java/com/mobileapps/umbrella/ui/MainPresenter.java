@@ -41,6 +41,8 @@ public class MainPresenter implements MainPresenterInterface
 
     public DisposableObserver<CurrentWeather> getObserver()
     {
+
+
         return new DisposableObserver<CurrentWeather>() {
             @Override
             public void onNext(CurrentWeather currentWeather) {

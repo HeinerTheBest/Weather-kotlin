@@ -7,6 +7,7 @@ import java.sql.DataTruncation;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 
 public class Utils
 {
@@ -20,7 +21,8 @@ public class Utils
     public String getWindSpeed(double windInMeterForSecond)
     {
         double wind = windInMeterForSecond*2.2369;
-        return  "Wind Speed: "+wind +"miles/hr";
+        DecimalFormat df = new DecimalFormat("###.##");
+        return  "Wind Speed: "+df.format(wind)+"miles/hr";
     }
 
     public String getHumedity(Integer humidity)
@@ -47,12 +49,24 @@ public class Utils
     }
 
 
-    public void getDay()
+    public String getCurrentDay()
     {
-        Timestamp ts=new Timestamp(System.currentTimeMillis());
-        Date date=new Date(ts.getTime());
-        Log.d("Heiner ","Hellooo "+date);
+        Timestamp ts= new Timestamp(System.currentTimeMillis());
+        Date date= new Date(ts.getTime());
+        Log.d("Heiner ","Hellooo "+date); //Hellooo 2019-07-15
         System.out.println(date);
+        String aux = String.valueOf(date);
+
+
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
+        Log.d("Heiner ","Second "+simpleDateformat.format(date)); //Second Monday
+
+        return simpleDateformat.format(date)+", "+aux;
     }
 
+    public String getImageUrl(String icon)
+    {
+        String url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
+        return url;
+    }
 }

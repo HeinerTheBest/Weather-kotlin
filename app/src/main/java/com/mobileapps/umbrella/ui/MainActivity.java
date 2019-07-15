@@ -1,11 +1,14 @@
 package com.mobileapps.umbrella.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import com.mobileapps.umbrella.R;
 import com.mobileapps.umbrella.models.CurrentWeather;
 import com.mobileapps.umbrella.utilities.SharedPreferences;
 import com.mobileapps.umbrella.utilities.Utils;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,10 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     TextView tvFarenheit;
 
 
-
-
-
-
+    @BindView(R.id.tvWeatherDescription)
+    TextView tvWeatherDescription;
 
     @BindView(R.id.etZipCode)
     EditText etZipCode;
@@ -49,6 +51,12 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
     @BindView(R.id.tvWindSpeed)
     TextView tvWindSpeed;
+
+    @BindView(R.id.imgWeather)
+    ImageView imgWeather;
+
+    @BindView(R.id.clCurrentWeather)
+    ConstraintLayout clCurrentWeather;
 
 
     private String TAG = "MainActivity";
@@ -71,6 +79,9 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         {
             //todo uncomment this
            // validateZipCode();
+
+            tvWeekDay.setText(utils.getCurrentDay());
+
         }
 
 
@@ -98,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
                 tvDegree.setText(utils.getDegree());
                 break;
 
+            case R.id.tvGoToWeatherForDays:
+                Intent intent = new Intent(this,DetailsOfTheWeekActivity.class);
+                
+                startActivity(intent);
+
 
 
         }
@@ -111,6 +127,9 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             setupMVP();
             getWeather();
             sharedPreferences.setZipCode(this,etZipCode.getText().toString());
+            tvWeekDay.setText(utils.getCurrentDay());
+            //Todo keep the information for search
+
         }
         else
         {
@@ -137,9 +156,11 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             tvDegree.setText(utils.getDegree());
             tvHumaditi.setText(utils.getHumedity(currentWeather.getMain().getHumidity()));
             tvWindSpeed.setText(utils.getWindSpeed(currentWeather.getWind().getSpeed()));
-
-
-
+            tvWeatherDescription.setText(currentWeather.getWeather().get(0).getDescription());
+            Picasso.with(this)
+                    .load(utils.getImageUrl(currentWeather.getWeather().get(0).getIcon()))
+                    .into(imgWeather);
+            clCurrentWeather.setVisibility(View.VISIBLE);
         }else{
             Log.d(TAG,"Movies response null");
         }
