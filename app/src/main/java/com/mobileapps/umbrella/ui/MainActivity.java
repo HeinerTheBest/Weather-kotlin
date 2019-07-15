@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
             case R.id.tvGoToWeatherForDays:
                 Intent intent = new Intent(this,DetailsOfTheWeekActivity.class);
-                
                 startActivity(intent);
 
 
