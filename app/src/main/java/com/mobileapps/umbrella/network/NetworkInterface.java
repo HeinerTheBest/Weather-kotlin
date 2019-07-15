@@ -15,7 +15,7 @@ public interface NetworkInterface
     @GET(CURRENT_WEATHER_PATH)
     Observable<CurrentWeather> getCurrentWeather(
             @Query(QUERY_ZIP) String zip,
-            @Query(QUERY_KEY) String APPID);
+            @Query(QUERY_KEY) String api_key);
 
 
 
