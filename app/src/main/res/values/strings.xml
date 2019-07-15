@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Umbrella</string>
+    <string name="enter_the_zip_code">Enter the Zip Code</string>
+    <string name="search">Search</string>
+    <string name="divide">|</string>
+    <string name="rarenheit">°F</string>
+    <string name="celcious">°C</string>
+    <string name="open_the_wather_of_the_next_days">Open the wather of the next days</string>
 </resources>

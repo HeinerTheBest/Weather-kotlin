@@ -8,4 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NormalTextViews" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+
+    <style name="TitleTextViews" parent="NormalTextViews">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="LinkTextViews" parent="NormalTextViews">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/colorLink</item>
+
+    </style>
+
 </resources>
