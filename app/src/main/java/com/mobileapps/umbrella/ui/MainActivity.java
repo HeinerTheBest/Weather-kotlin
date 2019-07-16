@@ -79,13 +79,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
         etZipCode.setText(sharedPreferences.getZipCode(this));
 
-        if(!etZipCode.getText().toString().isEmpty())
+        if(!etZipCode.getText().toString().equals(""))
         {
-
             validateZipCode();
-
             tvWeekDay.setText(utils.getCurrentDayWithDate());
-
         }
 
 
@@ -125,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
     public void validateZipCode()
     {
-        if(!etZipCode.getText().toString().isEmpty())
+        if(!etZipCode.getText().toString().equals(""))
         {
             setupMVP();
             setupMVP();
@@ -133,12 +130,27 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             sharedPreferences.setZipCode(this,etZipCode.getText().toString());
             tvWeekDay.setText(utils.getCurrentDayWithDate());
             //Todo keep the information for search
+            setWeatherWithRightDegree();
 
         }
         else
         {
             Toast.makeText(this, "Please enter the Zip Code", Toast.LENGTH_SHORT).show();
             tvSearch.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setWeatherWithRightDegree()
+    {
+        if(sharedPreferences.isFarenheit(this))
+        {
+            tvCelcius.setTextColor(getColor(R.color.colorNoSelect));
+            tvFarenheit.setTextColor(getColor(R.color.colorSelect));
+        }
+        else
+        {
+            tvCelcius.setTextColor(getColor(R.color.colorSelect));
+            tvFarenheit.setTextColor(getColor(R.color.colorNoSelect));
         }
     }
 
