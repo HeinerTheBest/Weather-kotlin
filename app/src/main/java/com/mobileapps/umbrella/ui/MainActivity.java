@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     @BindView(R.id.clCurrentWeather)
     ConstraintLayout clCurrentWeather;
 
+    @BindView(R.id.tvSearch)
+    TextView tvSearch;
+
 
     private String TAG = "MainActivity";
     MainPresenter mainPresenter;
@@ -73,12 +76,13 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         sharedPreferences = new SharedPreferences();
 
         ButterKnife.bind(this);
+
         etZipCode.setText(sharedPreferences.getZipCode(this));
 
         if(!etZipCode.getText().toString().isEmpty())
         {
-            //todo uncomment this
-           // validateZipCode();
+
+            validateZipCode();
 
             tvWeekDay.setText(utils.getCurrentDayWithDate());
 
@@ -92,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         switch (view.getId())
         {
             case R.id.tvSearch:
+                tvSearch.setVisibility(View.INVISIBLE);
                 validateZipCode();
                 break;
 
@@ -133,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         else
         {
             Toast.makeText(this, "Please enter the Zip Code", Toast.LENGTH_SHORT).show();
+            tvSearch.setVisibility(View.VISIBLE);
         }
     }
 
@@ -163,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         }else{
             Log.d(TAG,"Movies response null");
         }
+        tvSearch.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -170,6 +177,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     {
         Toast.makeText(this, "Try to insert the zip code again", Toast.LENGTH_SHORT).show();
         //todo add clean the edittext
-
+        tvSearch.setVisibility(View.VISIBLE);
     }
 }

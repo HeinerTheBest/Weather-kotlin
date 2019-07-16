@@ -48,6 +48,22 @@ public class Utils
         }
     }
 
+    public String getDegree(Double temp)
+    {
+        if(new SharedPreferences().isFarenheit(context))
+        {
+            double aux = (temp-273.15) * 9/5 + 32 ;
+            DecimalFormat df = new DecimalFormat("###.##");
+            return df.format(aux);
+        }
+        else
+        {
+            double aux = temp - 273.15;
+            DecimalFormat df = new DecimalFormat("###.##");
+            return df.format(aux);
+        }
+    }
+
 
     public String getCurrentDayWithDate()
     {
@@ -65,10 +81,23 @@ public class Utils
         return simpleDateformat.format(date)+", "+aux;
     }
 
+    public String getDayOfTheWeek(Integer unix_seconds)
+    {
+        Date date = new Date(unix_seconds*1000L);
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
+        return simpleDateformat.format(date);
+    }
+
 
     public String getImageUrl(String icon)
     {
         String url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
         return url;
+    }
+
+    public String getJustTIme(String dtTxt)
+    {
+        String timeToReturn = dtTxt.split(" ")[1];
+        return timeToReturn;
     }
 }
