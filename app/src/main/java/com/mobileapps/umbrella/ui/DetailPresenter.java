@@ -2,7 +2,7 @@ package com.mobileapps.umbrella.ui;
 
 import android.util.Log;
 
-import com.mobileapps.umbrella.models.currentWeather.CurrentWeather;
+import com.mobileapps.umbrella.models.watherofweek.WeatherOfTheWeek;
 import com.mobileapps.umbrella.network.NetworkClient;
 import com.mobileapps.umbrella.network.NetworkInterface;
 
@@ -11,49 +11,49 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class MainPresenter implements MainPresenterInterface
+public class DetailPresenter implements DetailPresenterInterface
 {
-
-    MainViewInterface mvi;
-    private String TAG = "MainPresenter";
+    DetailViewInterface dvi;
+    private String TAG = "DetailPresenter";
     private String zipCode;
 
 
-    public MainPresenter(MainViewInterface mvi,String zipCode)
+    public DetailPresenter(DetailViewInterface mvi,String zipCode)
     {
-        this.mvi = mvi;
+        this.dvi = mvi;
         this.zipCode = zipCode;
     }
 
-
     @Override
-    public void getCurrentWeather() {
+    public void getWeatherOfTheWeek()
+    {
         getObservable().subscribeWith(getObserver());
     }
 
 
-    public Observable<CurrentWeather> getObservable(){
+    public Observable<WeatherOfTheWeek> getObservable()
+    {
         return NetworkClient.getRetrofit().create(NetworkInterface.class)
-                .getCurrentWeather(zipCode,"5bf6c7f8208c9d8b5694f3b2a48f3f0a")
+                .getWeaklyWeather(zipCode,"5bf6c7f8208c9d8b5694f3b2a48f3f0a")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public DisposableObserver<CurrentWeather> getObserver()
+    public DisposableObserver<WeatherOfTheWeek> getObserver()
     {
-
-
-        return new DisposableObserver<CurrentWeather>() {
+        return new DisposableObserver<WeatherOfTheWeek>() {
             @Override
-            public void onNext(CurrentWeather currentWeather) {
-                mvi.displayWeather( currentWeather);
+            public void onNext(WeatherOfTheWeek weatherOfTheWeek) {
+                Log.d(TAG,"OnNext"+weatherOfTheWeek.getList());
+                dvi.displayWeather(weatherOfTheWeek);
             }
 
             @Override
             public void onError(Throwable e) {
                 Log.d(TAG,"Error"+e);
                 e.printStackTrace();
-                mvi.displayError("Error fetching Movie Data");
+                dvi.displayError("Error fetching Movie Data");
+
             }
 
             @Override
@@ -62,6 +62,7 @@ public class MainPresenter implements MainPresenterInterface
             }
         };
     }
+
 
 
 }

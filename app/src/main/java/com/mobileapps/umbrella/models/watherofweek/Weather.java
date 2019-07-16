@@ -1,5 +1,5 @@
 
-package com.mobileapps.umbrella.models;
+package com.mobileapps.umbrella.models.watherofweek;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,6 +1,6 @@
 package com.mobileapps.umbrella.ui;
 
-import com.mobileapps.umbrella.models.CurrentWeather;
+import com.mobileapps.umbrella.models.currentWeather.CurrentWeather;
 
 public interface MainViewInterface
 {

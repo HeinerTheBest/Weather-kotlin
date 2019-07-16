@@ -49,9 +49,10 @@ public class Utils
     }
 
 
-    public String getCurrentDay()
+    public String getCurrentDayWithDate()
     {
         Timestamp ts= new Timestamp(System.currentTimeMillis());
+        Log.d("Heiner ","time "+ts.getTime()); //
         Date date= new Date(ts.getTime());
         Log.d("Heiner ","Hellooo "+date); //Hellooo 2019-07-15
         System.out.println(date);
@@ -63,6 +64,7 @@ public class Utils
 
         return simpleDateformat.format(date)+", "+aux;
     }
+
 
     public String getImageUrl(String icon)
     {

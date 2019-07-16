@@ -6,4 +6,11 @@
     <string name="rarenheit">°F</string>
     <string name="celcious">°C</string>
     <string name="open_the_wather_of_the_next_days">Open the wather of the next days</string>
+    <string name="monday_char">M</string>
+    <string name="sunday_char">S</string>
+    <string name="tuesday_char">T</string>
+    <string name="wednesday_char">W</string>
+    <string name="thursday_char">T</string>
+    <string name="friday_char">F</string>
+    <string name="saturday_char">S</string>
 </resources>

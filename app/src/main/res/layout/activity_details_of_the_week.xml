@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.DetailsOfTheWeekActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvWeathers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

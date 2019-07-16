@@ -1,5 +1,5 @@
 
-package com.mobileapps.umbrella.models;
+package com.mobileapps.umbrella.models.currentWeather;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

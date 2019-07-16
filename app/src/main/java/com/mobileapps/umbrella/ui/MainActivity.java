@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobileapps.umbrella.R;
-import com.mobileapps.umbrella.models.CurrentWeather;
+import com.mobileapps.umbrella.models.currentWeather.CurrentWeather;
 import com.mobileapps.umbrella.utilities.SharedPreferences;
 import com.mobileapps.umbrella.utilities.Utils;
 import com.squareup.picasso.Picasso;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             //todo uncomment this
            // validateZipCode();
 
-            tvWeekDay.setText(utils.getCurrentDay());
+            tvWeekDay.setText(utils.getCurrentDayWithDate());
 
         }
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             setupMVP();
             getWeather();
             sharedPreferences.setZipCode(this,etZipCode.getText().toString());
-            tvWeekDay.setText(utils.getCurrentDay());
+            tvWeekDay.setText(utils.getCurrentDayWithDate());
             //Todo keep the information for search
 
         }
