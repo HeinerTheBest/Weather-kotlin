@@ -100,7 +100,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:text="@string/rarenheit"
+            android:text="@string/farenheit"
             android:id="@+id/tvFarenheit"
             app:layout_constraintTop_toBottomOf="@id/tvWeatherDescription"
             app:layout_constraintBottom_toTopOf="@id/tvWeatherDegree"
@@ -186,7 +186,8 @@
             app:layout_constraintTop_toBottomOf="@id/iconWindSpeed"
             style="@style/LinkTextViews"
             android:onClick="onClick"
-            android:text="@string/open_the_wather_of_the_next_days"
+            android:layout_margin="5dp"
+            android:text="@string/open_the_weather_of_the_next_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

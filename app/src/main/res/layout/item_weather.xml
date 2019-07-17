@@ -56,7 +56,7 @@
 
 
             <TextView
-                android:text="@string/rarenheit"
+                android:text="@string/farenheit"
                 android:id="@+id/tvFarenheit"
                 app:layout_constraintTop_toTopOf="@id/tvDivide"
                 app:layout_constraintBottom_toBottomOf="@id/tvDivide"
