@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Umbrella</string>
+    <string name="app_name">Umbrella Kotlin</string>
     <string name="enter_the_zip_code">Enter the Zip Code</string>
     <string name="search">Search</string>
     <string name="divide">|</string>
